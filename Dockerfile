@@ -1,6 +1,6 @@
 FROM python:3.8
 
-ARG with_models=false
+ARG with_models=true
 
 WORKDIR /app
 
@@ -19,5 +19,5 @@ RUN if [ "$with_models" = "true" ]; then  \
 # Install package from source code
 RUN pip install .
 
-EXPOSE 5000
+EXPOSE 8080
 ENTRYPOINT [ "libretranslate", "--host", "0.0.0.0" ]
