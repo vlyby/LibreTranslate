@@ -175,6 +175,20 @@ hooks:
 
 Then issue `./launcher rebuild app`. From the Discourse's admin panel then select "LibreTranslate" as a translation provider and set the relevant endpoint configurations.
 
+## Deploy to Google App Engine
+### build image
+build image for cloud registry since cloud build will timeout; note: for windows wsl2 on ubuntu is required to build the image
+docker build . -t gcr.io/vlybytranslate/vlybytranslate
+
+### push image
+gcloud docker push gcr.io/vlybytranslate/vlybytranslate
+Note:requires authentication - for windows use authentication is required outside of linux wsl 2 box
+https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper
+sudo usermod -a -G docker ${USER} if you work in linux
+
+### deploy app
+gcloud app deploy app.yaml --image-url=eu.gcr.io/vlybytranslate/vlybytranslate
+
 ## Mirrors
 
 This is a list of online resources that serve the LibreTranslate API. Some require an API key. If you want to add a new URL, please open a pull request.

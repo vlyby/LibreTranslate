@@ -4,16 +4,16 @@ env: flexible
 threadsafe: true
 automatic_scaling:
   min_num_instances: 2
-  max_num_instances: 5
+  max_num_instances: 8
   cpu_utilization:
     target_utilization: 0.4
 resources:
-  cpu: 6
-  memory_gb: 6
+  cpu: 4
+  memory_gb: 4
   disk_size_gb: 50
 readiness_check:
   check_interval_sec: 5
   timeout_sec: 4
   failure_threshold: 4
   success_threshold: 2
-  app_start_timeout_sec: 300
+  app_start_timeout_sec: 600
